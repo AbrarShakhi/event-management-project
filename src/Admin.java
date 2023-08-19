@@ -6,15 +6,15 @@ public class Admin {
         this.name = name;
     }
 
-    public String getName(String name) {
-        return this.name;
+    public String getName() {
+        return name;
     }
 
     public void setAdminId(int adminId) {
         this.adminId = adminId;
     }
 
-    public int getAdminId(int adminId) {
+    public int getAdminId() {
         return this.adminId;
     }
 

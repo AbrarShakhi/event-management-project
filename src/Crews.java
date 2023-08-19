@@ -8,7 +8,7 @@ public class Crews {
         this.name = name;
     }
 
-    public String getName(String name) {
+    public String getName() {
         return this.name;
     }
 
@@ -18,7 +18,6 @@ public class Crews {
 
     public void setTitl(String title) {
         this.title = title;
-
     }
 
     public void setDescription(String description) {
