@@ -1,0 +1,6 @@
+bin/*
+bin/*.class
+bin/**/*.class
+*.class
+**/*.class
+**/**/*.class

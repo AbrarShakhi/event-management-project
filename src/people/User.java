@@ -1,12 +1,9 @@
-public class User {
-    private int userID;
+package people;
+
+public class User extends Information {
     private String userType;
     private String username;
     private String password;
-
-    public int getUserID() {
-        return userID;
-    }
 
     public String getUserType() {
         return userType;
@@ -18,10 +15,6 @@ public class User {
 
     public String getPassword() {
         return password;
-    }
-
-    public void setUserID(int userID) {
-        this.userID = userID;
     }
 
     public void setUserType(String userType) {
