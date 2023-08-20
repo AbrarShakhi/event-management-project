@@ -3,7 +3,6 @@ package event_type;
 public abstract class Event {
     private String themeColor;
     private String dateOfEvent;
-    private String time;
     private String food;
 
     public void setThemeColor(String themeColor) {
@@ -22,13 +21,6 @@ public abstract class Event {
         return dateOfEvent;
     }
 
-    public void setTime(String time) {
-        this.time = time;
-    }
-
-    public String getTime() {
-        return time;
-    }
 
     public void setFood(String food) {
         this.food = food;
