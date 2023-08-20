@@ -9,5 +9,6 @@ public class Main {
         if (!init.welcome()) return;
 
         // it will give a choice to select an event either a birthday, Confrence, Wedding or costiom.
+        System.out.println("Manin program will start...");
     }
 }
