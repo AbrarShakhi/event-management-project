@@ -1,9 +1,20 @@
 package people;
 
+import event_type.*;
+
 public class User extends Information {
     private String userType;
     private String username;
     private String password;
+    private Event eventType;
+
+    public Event getEventType() {
+        return eventType;
+    }
+
+    public void setEventType(Event eventType) {
+        this.eventType = eventType;
+    }
 
     public String getUserType() {
         return userType;
