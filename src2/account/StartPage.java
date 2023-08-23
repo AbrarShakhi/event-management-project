@@ -3,7 +3,6 @@ package account;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 
 import java.awt.Color;
 import java.awt.Container;
@@ -103,8 +102,10 @@ public class StartPage {
     private ActionListener loginPressed = e -> {
         // frame.setVisible(false);
         Login login  = new Login();
+        frame.dispose();
     };
     private ActionListener registrationPressed = e -> {
         Register register = new Register();
+        frame.dispose();
     };
 }
