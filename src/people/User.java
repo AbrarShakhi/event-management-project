@@ -6,14 +6,29 @@ public class User extends Information {
     private String userType;
     private String username;
     private String password;
-    private Event eventType;
+    private Event event;
 
-    public Event getEventType() {
-        return eventType;
+    public User() {
+        userType = "default";
+        int id = new java.util.Random().nextInt();
+        setIdNumber(Integer.toString(id));
     }
 
-    public void setEventType(Event eventType) {
-        this.eventType = eventType;
+    public User(String FirstName, String LastName, String username, String password) {
+        setName(FirstName + " " + LastName);
+        setUsername(username);
+        setPassword(password);
+        userType = "default";
+        int id = new java.util.Random().nextInt();
+        setIdNumber(Integer.toString(id));
+    }
+
+    public Event getEvent() {
+        return event;
+    }
+
+    public void setEvent(Event event) {
+        this.event = event;
     }
 
     public String getUserType() {

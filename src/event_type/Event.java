@@ -3,12 +3,12 @@ package event_type;
 public class Event {
     private String themeColor;
     private String dateOfEvent;
-    private String food;
+    private String[] food;
 
     public Event() {
     }
 
-    public Event(String themeColor, String food, String dateOfEvent) {
+    public Event(String themeColor, String[] food, String dateOfEvent) {
         this.themeColor = themeColor;
         this.dateOfEvent = dateOfEvent;
         this.food = food;
@@ -30,11 +30,11 @@ public class Event {
         return dateOfEvent;
     }
 
-    public void setFood(String food) {
+    public void setFood(String[] food) {
         this.food = food;
     }
 
-    public String getFood() {
+    public String[] getFood() {
         return food;
     }
 }

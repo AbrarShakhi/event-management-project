@@ -1,5 +1,16 @@
 package control;
 
+/*
+* :
+* First It will take username, password, and make an as silmple as an user
+* account.
+* then it will show that user to choose a template.
+* once that choosing is done then User will have that information
+* 
+* ///////////// Then (Thinking) ///////////////
+* 
+*/
+
 import people.*;
 import event_type.*;
 
@@ -12,24 +23,27 @@ public class Main {
             if (!welcome())
                 return;
 
-            /*
-             * First It will take username, password, and make an as silmple as an user
-             * account.
-             * then it will show that user to choose a template.
-             * once that choosing is done then User will have that information
-             * 
-             * ///////////// Then (Thinking) ///////////////
-             * 
-             */
+            // To make it more simple we have not created sign in, up, out yet. We will
+            // create it leter.
+            // we will only ask user to enter their name and info.
+
+            var acc = new AccountLogic();
+            acc.takeInfo(input);
+            var user = new User(acc.getfName(), acc.getlName(), acc.getuName(), acc.getpWord());
+            user.setEvent(showTemplate());
+
+            var price = new Price();
+            price.calculate(user);
+            System.out.print("Total price is " + price.getTotalPrice());
 
         } finally {
             input.close();
         }
     }
 
-    public static void showTemplate() {
-        System.out.println("What kind of event are you planning for?");
+    public static Event showTemplate() {
         System.out.println();
+        System.out.println("What kind of event are you planning for?");
         System.out.println("1. Birthday");
         System.out.println("2. Conference");
         System.out.println("3. Wedding");
@@ -37,24 +51,26 @@ public class Main {
 
         boolean done;
         int ans;
+        Event event = new Event();
 
         do {
             System.out.print("Enter your choice: ");
             done = false;
             try {
                 ans = input.nextInt();
+
                 switch (ans) {
                     case 1 -> {
-                        // his/her choice is Birthday
+                        setEvent(event);
                     }
                     case 2 -> {
-                        // choice is Conference
+                        setEvent(event);
                     }
                     case 3 -> {
-                        // choice is Wedding
+                        setEvent(event);
                     }
                     case 4 -> {
-                        // choice is no selection
+                        setEvent(event);
                     }
                     default -> {
                         System.out.println("Invalid Input");
@@ -68,6 +84,24 @@ public class Main {
 
         } while (done);
 
+        return event;
+    }
+
+    public static void setEvent(Event event) {
+        System.out.print("What is you theme color: ");
+        event.setThemeColor(input.nextLine());
+
+        System.out.print("How many food idtem do you want: ");
+        String[] fitem = new String[input.nextInt()];
+
+        for (int i = 0; i < fitem.length; i++) {
+            System.out.printf("%d: ", i + 1);
+            fitem[i] = input.nextLine();
+        }
+        event.setFood(fitem);
+
+        System.out.println("Enter the date of the event: ");
+        event.setDateOfEvent(input.nextLine());
     }
 
     public static boolean welcome() {
@@ -82,7 +116,7 @@ public class Main {
         do {
             System.out.print("Enter 'GO' to start 'exit' to cancel: ");
             done = false;
-            ans = input.next().toLowerCase();
+            ans = input.nextLine().toLowerCase();
             if (ans.equals("go"))
                 return true;
             else if (ans.equals("exit"))
