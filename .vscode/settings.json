@@ -1,5 +1,5 @@
 {
-  "java.project.sourcePaths": ["src_gui"],
+  "java.project.sourcePaths": ["src"],
   "java.project.outputPath": "bin",
   "java.autobuild.enabled": false,
   "java.codeAction.sortMembers.avoidVolatileChanges": false,
