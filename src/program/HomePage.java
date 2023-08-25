@@ -1,10 +1,8 @@
 package program;
 
 import java.awt.Container;
-
 import javax.swing.JLabel;
 import javax.swing.JButton;
-
 import ui.MainFrame;
 
 public class HomePage extends MainFrame {
@@ -52,7 +50,7 @@ public class HomePage extends MainFrame {
 
     private void button() {
         checkoutBtn = new JButton("checkout");
-        int x = FRAME_WIDTH / 24;
+        int x = FRAME_WIDTH - (FRAME_WIDTH / 5);
         int y = FRAME_HEIGHT - (FRAME_HEIGHT / 5);
         int w = 100;
         int h = 20;
