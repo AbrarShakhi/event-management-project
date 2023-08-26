@@ -2,13 +2,16 @@ package program;
 
 import java.awt.Container;
 import javax.swing.JLabel;
+
+import people.User;
+
 import javax.swing.JButton;
 import ui.MainFrame;
 
 public class HomePage extends MainFrame {
-    private final String USERNAME;
+    private final User USER;
 
-    private int FRAME_WIDTH, FRAME_HEIGHT;
+    private final int FRAME_WIDTH, FRAME_HEIGHT;
 
     private Container c;
 
@@ -19,8 +22,8 @@ public class HomePage extends MainFrame {
         return this;
     }
 
-    public HomePage(String username) {
-        USERNAME = username;
+    public HomePage(User user) {
+        USER = user;
         FRAME_WIDTH = DEVICE_WIDTH;
         FRAME_HEIGHT = DEVICE_HEIGHT;
 
@@ -38,7 +41,7 @@ public class HomePage extends MainFrame {
     }
 
     private void lebel() {
-        usernameLbl = new JLabel(USERNAME);
+        usernameLbl = new JLabel(USER.getUsername());
         int x = FRAME_WIDTH / 24;
         int y = FRAME_HEIGHT / 24;
         int w = 300;

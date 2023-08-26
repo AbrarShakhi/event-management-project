@@ -16,7 +16,7 @@ import java.awt.Image;
 public class WelcomePage extends MainFrame {
 	private ButtonListener btnListener;
 
-	private int FRAME_WIDTH, FRAME_HEIGHT;
+	private final int FRAME_WIDTH, FRAME_HEIGHT;
 
 	private Container c;
 	private JButton loginBtn, registerBtn;
@@ -41,7 +41,7 @@ public class WelcomePage extends MainFrame {
 		titleFont = new Font(Font.MONOSPACED, Font.BOLD, 20);
 
 		setResizable(false);
-		setDefaultCloseOperation(MainFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(MainFrame.DISPOSE_ON_CLOSE);
 		setTitle("Event Management App");
 		setSize(FRAME_WIDTH, FRAME_HEIGHT);
 		setLocationRelativeTo(null);

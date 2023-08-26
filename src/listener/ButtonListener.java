@@ -5,52 +5,84 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
+import auth.LoginPage;
+import people.User;
 import program.HomePage;
 import program.WelcomePage;
 
 public class ButtonListener {
 
-    public class LoginBtnAl implements ActionListener {
-        private WelcomePage wlc;
+	public class LoginBtnFromLoginPage implements ActionListener {
+		private LoginPage loginPage;
+		private WelcomePage wlc;
+		private User user;
 
-        public LoginBtnAl(WelcomePage wel) {
-            this.wlc = wel;
-        }
+		public LoginBtnFromLoginPage(LoginPage loginPage, WelcomePage wlc) {
+			this.loginPage = loginPage;
+			this.wlc = wlc;
+			user = new User();
+		}
 
-        @Override
-        public void actionPerformed(ActionEvent ev) {
-            // need some work
-            JOptionPane.showMessageDialog(
-                    null,
-                    "I am working on it.\nPlease click ok to login as a TESTUSER",
-                    "login",
-                    JOptionPane.INFORMATION_MESSAGE);
+		@Override
+		public void actionPerformed(ActionEvent e) {
 
-            // It will dispose and open Homepage if user is valid
-            wlc.dispose();
-            new HomePage("username'TEST' (from login)"); // it wiil have user information
-        }
-    }
+			String username = loginPage.getUsernameField().getText();
 
-    public class RegisterBtnAl implements ActionListener {
-        private WelcomePage wlc;
+			if (username.isBlank()) {
 
-        public RegisterBtnAl(WelcomePage wlc) {
-            this.wlc = wlc;
-        }
+				JOptionPane.showMessageDialog(
+						null,
+						"Please input something",
+						"Invalid Username ir password",
+						JOptionPane.ERROR_MESSAGE);
 
-        @Override
-        public void actionPerformed(ActionEvent ev) {
-            // need some work
-            JOptionPane.showMessageDialog(
-                    null,
-                    "I am working on it.\nPlease click ok to register as a TESTUSER",
-                    "register",
-                    JOptionPane.INFORMATION_MESSAGE);
+			} else {
 
-            // It will dispose and open Homepage if user is valid
-            wlc.dispose();
-            new HomePage("username'TEST' (from register)"); // it wiil have user information
-        }
-    }
+				user.setUsername(username);
+				wlc.dispose();
+				new HomePage(user);
+
+			}
+
+			loginPage.dispose();
+		}
+	}
+
+	public class LoginBtnAl implements ActionListener {
+		private WelcomePage wlc;
+
+		public LoginBtnAl(WelcomePage wlc) {
+			this.wlc = wlc;
+		}
+
+		@Override
+		public void actionPerformed(ActionEvent ev) {
+
+			new LoginPage(wlc);
+			// wlc.setVisible(false);
+
+		}
+	}
+
+	public class RegisterBtnAl implements ActionListener {
+		private WelcomePage wlc;
+
+		public RegisterBtnAl(WelcomePage wlc) {
+			this.wlc = wlc;
+		}
+
+		@Override
+		public void actionPerformed(ActionEvent ev) {
+			// need some work
+			JOptionPane.showMessageDialog(
+					null,
+					"I am working on it.\nPlease click ok to register as a TESTUSER",
+					"register",
+					JOptionPane.INFORMATION_MESSAGE);
+
+			// It will dispose and open Homepage if user is valid
+			wlc.dispose();
+			new HomePage(new User()); // it wiil have user information
+		}
+	}
 }
