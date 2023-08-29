@@ -26,13 +26,16 @@ public class WelcomePage extends MainFrame {
 	private CardLayout cardsPics;
 	private Font titleFont;
 
+	private boolean isLogedIn;
 	private String[] picsPath;
 
 	public WelcomePage getWelcomePage() {
 		return this;
 	}
 
-	public WelcomePage() {
+	public WelcomePage(boolean isLogedIn) {
+		this.isLogedIn = isLogedIn;
+
 		FRAME_WIDTH = DEVICE_WIDTH / 3;
 		FRAME_HEIGHT = 2 * DEVICE_HEIGHT / 3;
 
@@ -58,8 +61,16 @@ public class WelcomePage extends MainFrame {
 		button();
 
 		c.add(titleLbl);
+
+		if (isLogedIn) {
+			loginBtn.setText("Continue");
+			loginBtn.addActionListener(null); // TODO: add action listener.
+			registerBtn.setVisible(false);
+		}
+		else
+			c.add(registerBtn);
+ 
 		c.add(loginBtn);
-		c.add(registerBtn);
 
 		setVisible(true);
 		nextSlide();
@@ -131,10 +142,10 @@ public class WelcomePage extends MainFrame {
 		loginBtn.setBounds(x, y, width, heigth);
 		registerBtn.setBounds(x + width + 5, y, width, heigth);
 
-		ButtonListener.LoginBtnAl loginBtnAl = btnListener.new LoginBtnAl(this);
-		ButtonListener.RegisterBtnAl registerBtnAl = btnListener.new RegisterBtnAl(this);
-		loginBtn.addActionListener(loginBtnAl);
-		registerBtn.addActionListener(registerBtnAl);
+		ButtonListener.OpenLoginPageAl openLoginPageAl = btnListener.new OpenLoginPageAl(this);
+		ButtonListener.OpenRegestrationPageAl openRegestrationPageAl = btnListener.new OpenRegestrationPageAl(this);
+		loginBtn.addActionListener(openLoginPageAl);
+		registerBtn.addActionListener(openRegestrationPageAl);
 	}
 
 	private String[] grabPicsPath() {

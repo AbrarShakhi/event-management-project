@@ -97,8 +97,8 @@ public class LoginPage extends MainFrame {
 		int width = passwordField.getWidth();
 		int height = passwordField.getHeight();
 		loginButton.setBounds(x, y, width, height);
-		ButtonListener.LoginBtnFromLoginPage actualloginBtnAl = btnListener.new LoginBtnFromLoginPage(this, welcomePage);
-		loginButton.addActionListener(actualloginBtnAl);
+		ButtonListener.LoginBtnAl loginBtn = btnListener.new LoginBtnAl(this, welcomePage);
+		loginButton.addActionListener(loginBtn);
 	}
 
 }

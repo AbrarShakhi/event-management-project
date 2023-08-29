@@ -12,12 +12,12 @@ import program.WelcomePage;
 
 public class ButtonListener {
 
-	public class LoginBtnFromLoginPage implements ActionListener {
+	public class LoginBtnAl implements ActionListener {
 		private LoginPage loginPage;
 		private WelcomePage wlc;
 		private User user;
 
-		public LoginBtnFromLoginPage(LoginPage loginPage, WelcomePage wlc) {
+		public LoginBtnAl(LoginPage loginPage, WelcomePage wlc) {
 			this.loginPage = loginPage;
 			this.wlc = wlc;
 			user = new User();
@@ -48,10 +48,10 @@ public class ButtonListener {
 		}
 	}
 
-	public class LoginBtnAl implements ActionListener {
+	public class OpenLoginPageAl implements ActionListener {
 		private WelcomePage wlc;
 
-		public LoginBtnAl(WelcomePage wlc) {
+		public OpenLoginPageAl(WelcomePage wlc) {
 			this.wlc = wlc;
 		}
 
@@ -64,10 +64,10 @@ public class ButtonListener {
 		}
 	}
 
-	public class RegisterBtnAl implements ActionListener {
+	public class OpenRegestrationPageAl implements ActionListener {
 		private WelcomePage wlc;
 
-		public RegisterBtnAl(WelcomePage wlc) {
+		public OpenRegestrationPageAl(WelcomePage wlc) {
 			this.wlc = wlc;
 		}
 
