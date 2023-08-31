@@ -1,4 +1,4 @@
-package program;
+package ui;
 
 import java.awt.Container;
 import javax.swing.JLabel;
@@ -6,7 +6,6 @@ import javax.swing.JLabel;
 import people.User;
 
 import javax.swing.JButton;
-import ui.MainFrame;
 
 public class HomePage extends MainFrame {
     private final User USER;

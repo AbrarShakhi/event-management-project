@@ -1,6 +1,5 @@
-package program;
+package ui;
 
-import ui.MainFrame;
 import listener.ButtonListener;
 
 import javax.swing.ImageIcon;
@@ -26,13 +25,21 @@ public class WelcomePage extends MainFrame {
 	private CardLayout cardsPics;
 	private Font titleFont;
 
+	private boolean isLoggedIn;
+
 	private String[] picsPath;
 
-	public WelcomePage getWelcomePage() {
-		return this;
+	public boolean isLoggedIn() {
+		return isLoggedIn;
 	}
 
-	public WelcomePage() {
+	public void setIsLoggedIn(boolean isLoggedIn) {
+		this.isLoggedIn = isLoggedIn;
+	}
+
+	public WelcomePage(boolean isLoggedIn) {
+		this.isLoggedIn = isLoggedIn;
+
 		FRAME_WIDTH = DEVICE_WIDTH / 3;
 		FRAME_HEIGHT = 2 * DEVICE_HEIGHT / 3;
 
@@ -41,11 +48,15 @@ public class WelcomePage extends MainFrame {
 		titleFont = new Font(Font.MONOSPACED, Font.BOLD, 20);
 
 		setResizable(false);
-		setDefaultCloseOperation(MainFrame.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(MainFrame.EXIT_ON_CLOSE);
 		setTitle("Event Management App");
 		setSize(FRAME_WIDTH, FRAME_HEIGHT);
 		setLocationRelativeTo(null);
 
+		initComponents();
+	}
+
+	public void initComponents() {
 		c = getContentPane();
 		c.setLayout(null);
 
@@ -59,7 +70,8 @@ public class WelcomePage extends MainFrame {
 
 		c.add(titleLbl);
 		c.add(loginBtn);
-		c.add(registerBtn);
+		if (!this.isLoggedIn)
+			c.add(registerBtn);
 
 		setVisible(true);
 		nextSlide();
@@ -96,7 +108,7 @@ public class WelcomePage extends MainFrame {
 	}
 
 	private void image() {
-			for (int i = 0; i < picsPath.length; i++) {	
+		for (int i = 0; i < picsPath.length; i++) {
 			Image p = new ImageIcon(picsPath[i]).getImage();
 
 			img = new ImageIcon(p.getScaledInstance(
@@ -121,20 +133,33 @@ public class WelcomePage extends MainFrame {
 	}
 
 	private void button() {
-		loginBtn = new JButton("Log in");
-		registerBtn = new JButton("Register");
+		String loginBtnText;
+		int width = FRAME_WIDTH / 5;
 		int x = FRAME_WIDTH / 10;
 		int y = FRAME_HEIGHT - (FRAME_HEIGHT / 5);
-		int width = FRAME_WIDTH / 5;
 		int heigth = FRAME_HEIGHT / 20;
 
+		loginBtn = new JButton();
+		registerBtn = new JButton("Register");
+
+		if (this.isLoggedIn) {
+			width *= 2;
+			loginBtnText = "Continue (already logged in)";
+
+			ButtonListener.DirectLogin directLogin = btnListener.new DirectLogin(this);
+			loginBtn.addActionListener(directLogin);
+		} else {
+			loginBtnText = "Log in";
+
+			ButtonListener.OpenLoginPageAl openLoginPageAl = btnListener.new OpenLoginPageAl(this);
+			ButtonListener.OpenRegestrationPageAl openRegestrationPageAl = btnListener.new OpenRegestrationPageAl(this);
+			loginBtn.addActionListener(openLoginPageAl);
+			registerBtn.addActionListener(openRegestrationPageAl);
+		}
+
+		loginBtn.setText(loginBtnText);
 		loginBtn.setBounds(x, y, width, heigth);
 		registerBtn.setBounds(x + width + 5, y, width, heigth);
-
-		ButtonListener.LoginBtnAl loginBtnAl = btnListener.new LoginBtnAl(this);
-		ButtonListener.RegisterBtnAl registerBtnAl = btnListener.new RegisterBtnAl(this);
-		loginBtn.addActionListener(loginBtnAl);
-		registerBtn.addActionListener(registerBtnAl);
 	}
 
 	private String[] grabPicsPath() {

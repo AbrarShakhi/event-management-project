@@ -1,4 +1,4 @@
-package auth;
+package ui;
 
 import java.awt.Container;
 
@@ -8,8 +8,6 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import listener.ButtonListener;
-import program.WelcomePage;
-import ui.MainFrame;
 
 public class LoginPage extends MainFrame {
 	private WelcomePage welcomePage;
@@ -23,7 +21,7 @@ public class LoginPage extends MainFrame {
 	private final int FRAME_WIDTH, FRAME_HEIGHT;
 
 	public JPasswordField getPasswordField() {
-		return passwordField;
+		return this.passwordField;
 	}
 
 	public JTextField getUsernameField() {
@@ -52,12 +50,6 @@ public class LoginPage extends MainFrame {
 		c.add(usernameField);
 		c.add(passwordField);
 		c.add(loginButton);
-
-		// for test...
-		var zzz = new JLabel("Login don't work. input anything");
-		zzz.setBounds(1, FRAME_HEIGHT - 100, FRAME_WIDTH, 100);
-		c.add(zzz);
-		// end
 
 		setVisible(true);
 	}
@@ -97,7 +89,8 @@ public class LoginPage extends MainFrame {
 		int width = passwordField.getWidth();
 		int height = passwordField.getHeight();
 		loginButton.setBounds(x, y, width, height);
-		ButtonListener.LoginBtnFromLoginPage actualloginBtnAl = btnListener.new LoginBtnFromLoginPage(this, welcomePage);
+		ButtonListener.LoginBtnFromLoginPage actualloginBtnAl = btnListener.new LoginBtnFromLoginPage(this,
+				welcomePage);
 		loginButton.addActionListener(actualloginBtnAl);
 	}
 

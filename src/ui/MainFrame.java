@@ -10,7 +10,6 @@ public abstract class MainFrame extends JFrame {
     public final int DEVICE_WIDTH;
     public final int DEVICE_HEIGHT;
 
-    // #Contructor...
     public MainFrame() {
         screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         DEVICE_HEIGHT = (int) (screenSize.getHeight());
