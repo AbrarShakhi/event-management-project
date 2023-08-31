@@ -1,63 +1,114 @@
 package ui;
 
+import java.awt.Color;
 import java.awt.Container;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
-import people.User;
+import inside.User;
 
 import javax.swing.JButton;
 
 public class HomePage extends MainFrame {
-    private final User USER;
+	private User user;
 
-    private final int FRAME_WIDTH, FRAME_HEIGHT;
+	private final int FRAME_WIDTH, FRAME_HEIGHT;
 
-    private Container c;
+	private Container c;
+	private JPanel mainBoxPnl;
+	private JPanel sideBarPnl;
 
-    private JLabel usernameLbl;
-    private JButton checkoutBtn;
+	private JLabel usernameLbl, nameLbl;
+	private JButton checkoutBtn, exitBtn, logoutBtn;
 
-    public HomePage getWelcomePage() {
-        return this;
-    }
+	public HomePage getWelcomePage() {
+		return this;
+	}
 
-    public HomePage(User user) {
-        USER = user;
-        FRAME_WIDTH = DEVICE_WIDTH;
-        FRAME_HEIGHT = DEVICE_HEIGHT;
+	public HomePage(User user) {
+		this.user = user;
+		FRAME_WIDTH = DEVICE_WIDTH - 50;
+		FRAME_HEIGHT = DEVICE_HEIGHT - 50;
 
-        setDefaultCloseOperation(MainFrame.EXIT_ON_CLOSE);
-        setTitle("Event Management App");
-        setSize(FRAME_WIDTH, FRAME_HEIGHT);
-        setLocationRelativeTo(null);
-        c = getContentPane();
-        c.setLayout(null);
+		setDefaultCloseOperation(MainFrame.EXIT_ON_CLOSE);
+		setTitle("Event Management App");
+		setSize(FRAME_WIDTH, FRAME_HEIGHT);
+		setLocationRelativeTo(null);
+		c = getContentPane();
+		c.setLayout(null);
 
-        lebel();
-        button();
+		panel();
+		c.add(mainBoxPnl);
+		c.add(sideBarPnl);
 
-        setVisible(true);
-    }
+		lebel();
+		button();
 
-    private void lebel() {
-        usernameLbl = new JLabel(USER.getUsername());
-        int x = FRAME_WIDTH / 24;
-        int y = FRAME_HEIGHT / 24;
-        int w = 300;
-        int h = 20;
-        usernameLbl.setBounds(x, y, w, h);
+		sideBarPnl.add(logoutBtn);
+		sideBarPnl.add(usernameLbl);
+		sideBarPnl.add(nameLbl);
 
-        c.add(usernameLbl);
-    }
+		mainBoxPnl.add(checkoutBtn);
+		mainBoxPnl.add(exitBtn);
 
-    private void button() {
-        checkoutBtn = new JButton("checkout");
-        int x = FRAME_WIDTH - (FRAME_WIDTH / 5);
-        int y = FRAME_HEIGHT - (FRAME_HEIGHT / 5);
-        int w = 100;
-        int h = 20;
-        checkoutBtn.setBounds(x, y, w, h);
+		setVisible(true);
+	}
 
-        c.add(checkoutBtn);
-    }
+	private void panel() {
+		mainBoxPnl = new JPanel();
+		sideBarPnl = new JPanel();
+		mainBoxPnl.setLayout(null);
+		sideBarPnl.setLayout(null);
+
+		int x, y, w, h;
+
+		x = 0;
+		y = 0;
+		w = FRAME_WIDTH / 6;
+		h = FRAME_HEIGHT;
+		sideBarPnl.setBackground(Color.LIGHT_GRAY);
+		sideBarPnl.setBounds(x, y, w, h);
+
+		x = FRAME_WIDTH / 6;
+		y = 0;
+		w = FRAME_WIDTH - (FRAME_WIDTH / 6) - 10;
+		h = FRAME_HEIGHT;
+		mainBoxPnl.setBounds(x, y, w, h);
+	}
+
+	private void lebel() {
+		int x, y, w, h;
+
+		usernameLbl = new JLabel(user.getUsername());
+		x = (sideBarPnl.getWidth() + (sideBarPnl.getWidth() / 10)) - sideBarPnl.getWidth();
+		y = sideBarPnl.getHeight() / 20;
+		w = sideBarPnl.getWidth() - x;
+		h = 25;
+		usernameLbl.setBounds(x, y, w, h);
+
+		nameLbl = new JLabel(user.getName());
+		x = (sideBarPnl.getWidth() + (sideBarPnl.getWidth() / 10)) - sideBarPnl.getWidth();
+		y = sideBarPnl.getHeight() / 20 + y;
+		w = sideBarPnl.getWidth() - x;
+		h = 25;
+		nameLbl.setBounds(x, y, w, h);
+	}
+
+	private void button() {
+		checkoutBtn = new JButton("checkout");
+		exitBtn = new JButton("exit");
+		int x = mainBoxPnl.getWidth() - (mainBoxPnl.getWidth() / 8);
+		int y = mainBoxPnl.getHeight() - (mainBoxPnl.getHeight() / 5);
+		int w = 100;
+		int h = 25;
+		checkoutBtn.setBounds(x, y, w, h);
+		exitBtn.setBounds(x - w - 5, y, w, h);
+
+		logoutBtn = new JButton("Log out");
+		x = (sideBarPnl.getWidth() + (sideBarPnl.getWidth() / 50)) - sideBarPnl.getWidth();
+		y = sideBarPnl.getHeight() - (sideBarPnl.getHeight() / 5);
+		w = sideBarPnl.getWidth() - x;
+		h = 25;
+		logoutBtn.setBounds(x, y, w, h);
+	}
 }

@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import auth.*;
-import people.*;
+import inside.*;
 import ui.*;
 import utility.*;
 
@@ -37,7 +37,7 @@ public class ButtonListener {
 				FileDir.resetFile(FilePaths.LOGGED_IN_USERNAME, "username");
 				return;
 			}
-			if (userInfo.length != 4) {
+			if (userInfo.length != 5) {
 				JOptionPane.showMessageDialog(null,
 						"There is something wrong in user data. We have to reset our all the data. Restart the app",
 						"Error",
@@ -49,6 +49,7 @@ public class ButtonListener {
 
 			user.setUsername(userInfo[0]);
 			user.setName(userInfo[1], userInfo[2]);
+			user.setEmail(userInfo[3]);
 			user.setPassword(userInfo[3]);
 
 			wlc.dispose();
@@ -91,11 +92,11 @@ public class ButtonListener {
 					JOptionPane.showMessageDialog(
 							null,
 							"Invalid username",
-							"Invalid Username ir password",
+							"Invalid Username or password",
 							JOptionPane.ERROR_MESSAGE);
 					return;
 				}
-				if (userInfo.length != 4) {
+				if (userInfo.length != 5) {
 					JOptionPane.showMessageDialog(null,
 							"There is something wrong in user data. We have to reset our all the data. Restart the app",
 							"Error",
@@ -103,17 +104,18 @@ public class ButtonListener {
 					FileDir.resetFile(FilePaths.REGISTERED_USER, "username firstName lastName password");
 					return;
 				}
-				if (!inputPassword.equals(userInfo[3])) {
+				if (!inputPassword.equals(userInfo[4])) {
 					JOptionPane.showMessageDialog(
 							null,
 							"Invalid password",
-							"Invalid Username ir password",
+							"Invalid Username or password",
 							JOptionPane.ERROR_MESSAGE);
 					return;
 				}
 
 				user.setUsername(userInfo[0]);
 				user.setName(userInfo[1], userInfo[2]);
+				user.setEmail(userInfo[3]);
 				user.setPassword(userInfo[3]);
 
 				wlc.dispose();

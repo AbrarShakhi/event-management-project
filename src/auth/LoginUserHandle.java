@@ -31,9 +31,10 @@ public class LoginUserHandle {
 				userInfo.add(pises[0]);
 				userInfo.add(pises[1]);
 				userInfo.add(pises[2]);
+				userInfo.add(pises[3]);
 
 				StringBuffer sbf = new StringBuffer();
-				for (int i = 3; i < pises.length; i++)
+				for (int i = 4; i < pises.length; i++)
 					sbf.append(pises[i] + " ");
 
 				userInfo.add(sbf.toString().trim());

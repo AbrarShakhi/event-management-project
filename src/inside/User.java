@@ -1,9 +1,27 @@
-package people;
+package inside;
 
 public class User {
 	private String name;
 	private String username;
+	private String email;
 	private String password;
+	private Item item;
+
+	public Item getItem() {
+		return item;
+	}
+
+	public void setItem(Item item) {
+		this.item = item;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 	public String getName() {
 		return name;

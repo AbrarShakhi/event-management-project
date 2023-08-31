@@ -85,13 +85,11 @@ public class WelcomePage extends MainFrame {
 				try {
 					Thread.sleep(5000);
 				} catch (InterruptedException ie) {
-					ie.printStackTrace();
+					break;
 				}
 				cardsPics.next(slideShowPanel);
 				System.out.println("Changing");
 			}
-			System.out.println("Done");
-
 			i++;
 		};
 
