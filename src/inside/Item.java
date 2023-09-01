@@ -1,79 +1,62 @@
 package inside;
 
-import java.awt.Color;
+import java.util.HashMap;
 
 public class Item {
-	private String eventType;
-	private Color color;
-	private boolean music;
-	private int helper;
-	private int estimatedPeople;
-	private String msgPrompt;
+	private HashMap<String, Integer> eventType;
+	private HashMap<String, Integer> color;
+	private HashMap<Boolean, Integer> music;
+	private HashMap<Integer, Integer> helper;
+	private HashMap<Integer, Integer> estimatedPeople;
+	private HashMap<String, Integer> msgPrompt;
+	private HashMap<Boolean, Integer> decoration;
 	private Food food;
-	private boolean decoration;
 
-	public Item() {
-	}
-
-	public Item(String eventType, Color color,
-			boolean music, int helper,
-			int estimatedPeople, String msgPrompt,
-			Food food, boolean decoration) {
-		this.eventType = eventType;
-		this.color = color;
-		this.music = music;
-		this.helper = helper;
-		this.estimatedPeople = estimatedPeople;
-		this.msgPrompt = msgPrompt;
-		this.food = food;
-		this.decoration = decoration;
-	}
-
-	public String getEventType() {
+	public HashMap<String, Integer> getEventType() {
 		return eventType;
 	}
 
-	public void setEventType(String eventType) {
+	public void setEventType(HashMap<String, Integer> eventType) {
 		this.eventType = eventType;
 	}
 
-	public Color getColor() {
+	public HashMap<String, Integer> getColor() {
 		return color;
 	}
 
-	public void setColor(Color color) {
+	public void setColor(HashMap<String, Integer> color) {
 		this.color = color;
 	}
 
-	public boolean isMusic() {
+	public HashMap<Boolean, Integer> getMusic() {
 		return music;
 	}
 
-	public void setMusic(boolean music) {
+	public void setMusic(HashMap<Boolean, Integer> music) {
 		this.music = music;
 	}
 
-	public int getHelper() {
+	public HashMap<Integer, Integer> getHelper() {
 		return helper;
 	}
 
-	public void setHelper(int helper) {
+	public void setHelper(HashMap<Integer, Integer> helper) {
 		this.helper = helper;
 	}
 
-	public int getEstimatedPeople() {
+	public HashMap<Integer, Integer> getEstimatedPeople() {
 		return estimatedPeople;
 	}
 
-	public void setEstimatedPeople(int estimatedPeople) {
+	public void setEstimatedPeople(HashMap<Integer, Integer> estimatedPeople) {
 		this.estimatedPeople = estimatedPeople;
 	}
 
-	public String getMsgPrompt() {
+	public HashMap<String, Integer> getMsgPrompt() {
 		return msgPrompt;
 	}
 
-	public void setMsgPrompt(String msgPrompt) {
+	public void setMsgPrompt(HashMap<String, Integer> msgPrompt) {
 		this.msgPrompt = msgPrompt;
 	}
 
@@ -85,11 +68,11 @@ public class Item {
 		this.food = food;
 	}
 
-	public boolean getDecoration() {
+	public HashMap<Boolean, Integer> getDecoration() {
 		return decoration;
 	}
 
-	public void setDecoration(boolean decoration) {
+	public void setDecoration(HashMap<Boolean, Integer> decoration) {
 		this.decoration = decoration;
 	}
 
