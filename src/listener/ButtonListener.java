@@ -11,7 +11,7 @@ import ui.*;
 import utility.*;
 
 public class ButtonListener {
-	
+
 	public class ExitProgram implements ActionListener {
 		LoginUserHandle loginUserHandle;
 		private HomePage homePage;
@@ -28,10 +28,10 @@ public class ButtonListener {
 			int choice = JOptionPane.showOptionDialog(null, "Do you want to save login info?", "exit",
 					JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.DEFAULT_OPTION, null, null, null);
 			switch (choice) {
-				case 0: // yes
-				loginUserHandle.saveUsername(user.getUsername());
+				case 0:
+					FileDir.resetFile(FilePaths.LOGGED_IN_USERNAME, "username " + user.getUsername());
 					break;
-				case 1: // no
+				case 1:
 					FileDir.resetFile(FilePaths.LOGGED_IN_USERNAME, "username");
 					break;
 				default:
@@ -88,7 +88,8 @@ public class ButtonListener {
 			user.setEmail(userInfo[3]);
 			user.setPassword(userInfo[3]);
 
-			wlc.dispose();
+			wlc.disposeAndstopSlideShow();
+			;
 
 			new HomePage(user);
 		}
@@ -103,8 +104,8 @@ public class ButtonListener {
 		public LoginBtnFromLoginPage(LoginPage loginPage, WelcomePage wlc) {
 			this.loginPage = loginPage;
 			this.wlc = wlc;
-			loginUserHandle = new LoginUserHandle();
-			user = new User();
+			this.loginUserHandle = new LoginUserHandle();
+			this.user = new User();
 		}
 
 		@Override
@@ -154,7 +155,7 @@ public class ButtonListener {
 				user.setEmail(userInfo[3]);
 				user.setPassword(userInfo[3]);
 
-				wlc.dispose();
+				wlc.disposeAndstopSlideShow();
 				new HomePage(user);
 
 			} finally {
@@ -188,12 +189,60 @@ public class ButtonListener {
 
 		@Override
 		public void actionPerformed(ActionEvent ev) {
-			// need some work
-			RegisterPage rgp = new RegisterPage(wlc);
+			// RegisterPage rgp =
+			new RegisterPage();
 
-			// It will dispose and open Homepage if user is valid
-			wlc.dispose();
-			new HomePage(new User()); // it wiil have user information
+			wlc.disposeAndstopSlideShow();
+		}
+	}
+
+	public class RegisterFromRegisterPage implements ActionListener {
+		private RegisterPage registerPage;
+		private User user;
+
+		public RegisterFromRegisterPage(RegisterPage registerPage) {
+			this.registerPage = registerPage;
+			this.user = new User();
+		}
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			String username = registerPage.getUsername();
+			String firstName = registerPage.getFirstNameFileld().getText();
+			String lastName = registerPage.getLastNameFileld().getText();
+			String email = registerPage.getEmailFeild().getText();
+			String password = new String(registerPage.getPasswordField().getPassword());
+
+			if (username == null || firstName == null ||
+					lastName == null || email == null || password == null)
+				return;
+
+			if (username.isEmpty() || firstName.isEmpty() ||
+					lastName.isEmpty() || email.isEmpty() || password.isEmpty())
+				return;
+
+			username = username.trim();
+			firstName = firstName.trim();
+			lastName = lastName.trim();
+			email = email.trim();
+			password = password.trim();
+
+			FileDir.AppendFile(FilePaths.REGISTERED_USER,
+					username + " " + firstName + " " + lastName + " " + email + " " + password);
+
+			user.setUsername(username);
+			user.setName(firstName, lastName);
+			user.setEmail(email);
+			user.setPassword(password);
+
+			try {
+				Thread.sleep(200);
+			} catch (Exception ex) {
+				return;
+			}
+
+			new HomePage(user);
+			registerPage.dispose();
 		}
 	}
 }

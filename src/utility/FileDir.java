@@ -15,6 +15,38 @@ public class FileDir {
 		return new File(path).exists();
 	}
 
+	public static void AppendFile(String fileName, String promt) {
+		createDir(FilePaths.DATA_FOLDER);
+
+		String path = FilePaths.DATA_FOLDER + "/" + fileName;
+		FileWriter fr = null;
+		try {
+			if (!isExists(path)) {
+				try {
+					fr = new FileWriter(path);
+					fr.write("");
+				} catch (Exception e) {
+				} finally {
+					if (fr != null)
+						try {
+							fr.close();
+						} catch (Exception e) {
+						}
+				}
+			}
+
+			fr = new FileWriter(path, true);
+			fr.append("\n" + promt);
+		} catch (Exception e) {
+		} finally {
+			if (fr != null)
+				try {
+					fr.close();
+				} catch (Exception e) {
+				}
+		}
+	}
+
 	public static void resetFile(String filePath, String input) {
 
 		createDir(FilePaths.DATA_FOLDER);

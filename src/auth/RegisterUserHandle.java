@@ -1,13 +1,20 @@
-public class RegisterUserHandle
-	{
-		public boolean checkUserAvailibility(String targetInput){
-			String[] targetInput = findRgisteredUser.userInfo.pises[0];
-			if (targetInput == null)
-				return true;
-			if ( targetInput == inputUsername) 
-				return true;
-			else return false;
-			
-		}
+package auth;
+
+public class RegisterUserHandle {
+	LoginUserHandle loginUserHandle;
+
+	public boolean checkUserAvailibility(String targetInput) {
+		loginUserHandle = new LoginUserHandle();
+
+		String[] registerInput = loginUserHandle.findRgisteredUser(targetInput);
+		if (registerInput == null)
+			return true;
 		
+		if (registerInput.length != 5)
+			return true;
+
+		return false;
+
 	}
+
+}

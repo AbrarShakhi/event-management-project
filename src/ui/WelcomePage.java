@@ -15,6 +15,8 @@ import java.awt.Image;
 public class WelcomePage extends MainFrame {
 	private ButtonListener btnListener;
 
+	Thread changeBannerThread;
+
 	private final int FRAME_WIDTH, FRAME_HEIGHT;
 
 	private Container c;
@@ -77,11 +79,14 @@ public class WelcomePage extends MainFrame {
 		nextSlide();
 	}
 
-	private void nextSlide() {
-		Runnable r = () -> {
+	public void disposeAndstopSlideShow() {
+		this.dispose();
+		changeBannerThread.interrupt();
+	}
 
-			int i = 1;
-			while (picsPath.length * 2 >= i) {
+	private void nextSlide() {
+		changeBannerThread = new Thread((Runnable) () -> {
+			while (true) {
 				try {
 					Thread.sleep(5000);
 				} catch (InterruptedException ie) {
@@ -90,10 +95,8 @@ public class WelcomePage extends MainFrame {
 				cardsPics.next(slideShowPanel);
 				System.out.println("Changing");
 			}
-			i++;
-		};
+		});
 
-		new Thread(r).start();
 	}
 
 	private void panel() {

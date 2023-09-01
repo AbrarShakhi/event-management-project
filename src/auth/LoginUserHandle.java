@@ -1,39 +1,16 @@
 package auth;
 
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 
-import utility.*;
+import utility.FileDir;
+import utility.FilePaths;
 
 public class LoginUserHandle {
-
-	public void saveUsername(String username){
-		BufferedWriter bufferedWriter = null;
-		try {
-		FileDir.resetFile(FilePaths.LOGGED_IN_USERNAME,"username");
-		File app = new File(FilePaths.LOGGED_IN_USERNAME);
-		
-		FileWriter fileWriter = new FileWriter(app);
-		 bufferedWriter = new BufferedWriter(fileWriter);
-		
-		bufferedWriter.write("username " +inputUsername);		//Getting the input username
-		bufferedWriter.close();
-		fileWriter.close();	
-		
-		} catch (Exception e) {
-			return ;
-
-		} finally {
-			if (bufferedWriter != null)
-				bufferedWriter.close();
-		}
-	}
 
 	public String[] findRgisteredUser(String tergetUsername) {
 		String path = FilePaths.DATA_FOLDER + "/" + FilePaths.REGISTERED_USER;
