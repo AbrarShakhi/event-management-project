@@ -11,6 +11,26 @@ import ui.*;
 import utility.*;
 
 public class ButtonListener {
+	public class LogoutAl implements ActionListener {
+		private HomePage homePage;
+
+		public LogoutAl(HomePage homePage) {
+			this.homePage = homePage;
+		}
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			FileDir.resetFile(FilePaths.LOGGED_IN_USERNAME, "username");
+
+			try {
+				homePage.dispose();
+				Thread.sleep(2000);
+			} catch (InterruptedException e1) {
+			} finally {
+				System.exit(0);
+			}
+		}
+	}
 
 	public class ExitProgram implements ActionListener {
 		LoginUserHandle loginUserHandle;

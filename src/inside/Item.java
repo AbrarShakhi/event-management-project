@@ -12,6 +12,17 @@ public class Item {
 	private HashMap<Boolean, Integer> decoration;
 	private Food food;
 
+	public Item() {
+		this.eventType = new HashMap<>();
+		this.color = new HashMap<>();
+		this.music = new HashMap<>();
+		this.helper = new HashMap<>();
+		this.estimatedPeople = new HashMap<>();
+		this.msgPrompt = new HashMap<>();
+		this.decoration = new HashMap<>();
+		this.food = new Food();
+	}
+
 	public HashMap<String, Integer> getEventType() {
 		return eventType;
 	}
@@ -60,20 +71,20 @@ public class Item {
 		this.msgPrompt = msgPrompt;
 	}
 
-	public Food getFood() {
-		return food;
-	}
-
-	public void setFood(Food food) {
-		this.food = food;
-	}
-
 	public HashMap<Boolean, Integer> getDecoration() {
 		return decoration;
 	}
 
 	public void setDecoration(HashMap<Boolean, Integer> decoration) {
 		this.decoration = decoration;
+	}
+
+	public Food getFood() {
+		return food;
+	}
+
+	public void setFood(Food food) {
+		this.food = food;
 	}
 
 }

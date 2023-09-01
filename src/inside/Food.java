@@ -3,143 +3,157 @@ package inside;
 import java.util.HashMap;
 
 public class Food {
-	HashMap<String, Integer> rice;
-	HashMap<String, Integer> beef;
-	HashMap<String, Integer> chickenLegPies;
-	HashMap<String, Integer> coke;
-	HashMap<String, Integer> soup;
-	HashMap<String, Integer> hilshaFish;
-	HashMap<String, Integer> dirthCake;
-	HashMap<String, Integer> basicDinner;
-	HashMap<String, Integer> basicLunch;
-	HashMap<String, Integer> basicBreakfast;
-	HashMap<String, Integer> biriani;
-	HashMap<String, Integer> kacchi;
-	HashMap<String, Integer> chingriMalaiCurry;
-	HashMap<String, Integer> daal;
-	HashMap<String, Integer> mutton;
+	private HashMap<Boolean, Integer> rice;
+	private HashMap<Boolean, Integer> beef;
+	private HashMap<Boolean, Integer> chickenLegPies;
+	private HashMap<Boolean, Integer> coke;
+	private HashMap<Boolean, Integer> soup;
+	private HashMap<Boolean, Integer> hilshaFish;
+	private HashMap<Boolean, Integer> dirthCake;
+	private HashMap<Boolean, Integer> basicDinner;
+	private HashMap<Boolean, Integer> basicLunch;
+	private HashMap<Boolean, Integer> basicBreakfast;
+	private HashMap<Boolean, Integer> biriani;
+	private HashMap<Boolean, Integer> kacchi;
+	private HashMap<Boolean, Integer> chingriMalaiCurry;
+	private HashMap<Boolean, Integer> daal;
+	private HashMap<Boolean, Integer> mutton;
 
 	public Food() {
+		this.rice = new HashMap<>();
+		this.beef = new HashMap<>();
+		this.chickenLegPies = new HashMap<>();
+		this.coke = new HashMap<>();
+		this.soup = new HashMap<>();
+		this.hilshaFish = new HashMap<>();
+		this.dirthCake = new HashMap<>();
+		this.basicDinner = new HashMap<>();
+		this.basicLunch = new HashMap<>();
+		this.basicBreakfast = new HashMap<>();
+		this.biriani = new HashMap<>();
+		this.kacchi = new HashMap<>();
+		this.chingriMalaiCurry = new HashMap<>();
+		this.daal = new HashMap<>();
+		this.mutton = new HashMap<>();
 	}
 
-	public HashMap<String, Integer> getRice() {
+	public HashMap<Boolean, Integer> getRice() {
 		return rice;
 	}
 
-	public void setRice(HashMap<String, Integer> rice) {
+	public void setRice(HashMap<Boolean, Integer> rice) {
 		this.rice = rice;
 	}
 
-	public HashMap<String, Integer> getBeef() {
+	public HashMap<Boolean, Integer> getBeef() {
 		return beef;
 	}
 
-	public void setBeef(HashMap<String, Integer> beef) {
+	public void setBeef(HashMap<Boolean, Integer> beef) {
 		this.beef = beef;
 	}
 
-	public HashMap<String, Integer> getChickenLegPies() {
+	public HashMap<Boolean, Integer> getChickenLegPies() {
 		return chickenLegPies;
 	}
 
-	public void setChickenLegPies(HashMap<String, Integer> chickenLegPies) {
+	public void setChickenLegPies(HashMap<Boolean, Integer> chickenLegPies) {
 		this.chickenLegPies = chickenLegPies;
 	}
 
-	public HashMap<String, Integer> getCoke() {
+	public HashMap<Boolean, Integer> getCoke() {
 		return coke;
 	}
 
-	public void setCoke(HashMap<String, Integer> coke) {
+	public void setCoke(HashMap<Boolean, Integer> coke) {
 		this.coke = coke;
 	}
 
-	public HashMap<String, Integer> getSoup() {
+	public HashMap<Boolean, Integer> getSoup() {
 		return soup;
 	}
 
-	public void setSoup(HashMap<String, Integer> soup) {
+	public void setSoup(HashMap<Boolean, Integer> soup) {
 		this.soup = soup;
 	}
 
-	public HashMap<String, Integer> getHilshaFish() {
+	public HashMap<Boolean, Integer> getHilshaFish() {
 		return hilshaFish;
 	}
 
-	public void setHilshaFish(HashMap<String, Integer> hilshaFish) {
+	public void setHilshaFish(HashMap<Boolean, Integer> hilshaFish) {
 		this.hilshaFish = hilshaFish;
 	}
 
-	public HashMap<String, Integer> getDirthCake() {
+	public HashMap<Boolean, Integer> getDirthCake() {
 		return dirthCake;
 	}
 
-	public void setDirthCake(HashMap<String, Integer> dirthCake) {
+	public void setDirthCake(HashMap<Boolean, Integer> dirthCake) {
 		this.dirthCake = dirthCake;
 	}
 
-	public HashMap<String, Integer> getBasicDinner() {
+	public HashMap<Boolean, Integer> getBasicDinner() {
 		return basicDinner;
 	}
 
-	public void setBasicDinner(HashMap<String, Integer> basicDinner) {
+	public void setBasicDinner(HashMap<Boolean, Integer> basicDinner) {
 		this.basicDinner = basicDinner;
 	}
 
-	public HashMap<String, Integer> getBasicLunch() {
+	public HashMap<Boolean, Integer> getBasicLunch() {
 		return basicLunch;
 	}
 
-	public void setBasicLunch(HashMap<String, Integer> basicLunch) {
+	public void setBasicLunch(HashMap<Boolean, Integer> basicLunch) {
 		this.basicLunch = basicLunch;
 	}
 
-	public HashMap<String, Integer> getBasicBreakfast() {
+	public HashMap<Boolean, Integer> getBasicBreakfast() {
 		return basicBreakfast;
 	}
 
-	public void setBasicBreakfast(HashMap<String, Integer> basicBreakfast) {
+	public void setBasicBreakfast(HashMap<Boolean, Integer> basicBreakfast) {
 		this.basicBreakfast = basicBreakfast;
 	}
 
-	public HashMap<String, Integer> getBiriani() {
+	public HashMap<Boolean, Integer> getBiriani() {
 		return biriani;
 	}
 
-	public void setBiriani(HashMap<String, Integer> biriani) {
+	public void setBiriani(HashMap<Boolean, Integer> biriani) {
 		this.biriani = biriani;
 	}
 
-	public HashMap<String, Integer> getKacchi() {
+	public HashMap<Boolean, Integer> getKacchi() {
 		return kacchi;
 	}
 
-	public void setKacchi(HashMap<String, Integer> kacchi) {
+	public void setKacchi(HashMap<Boolean, Integer> kacchi) {
 		this.kacchi = kacchi;
 	}
 
-	public HashMap<String, Integer> getChingriMalaiCurry() {
+	public HashMap<Boolean, Integer> getChingriMalaiCurry() {
 		return chingriMalaiCurry;
 	}
 
-	public void setChingriMalaiCurry(HashMap<String, Integer> chingriMalaiCurry) {
+	public void setChingriMalaiCurry(HashMap<Boolean, Integer> chingriMalaiCurry) {
 		this.chingriMalaiCurry = chingriMalaiCurry;
 	}
 
-	public HashMap<String, Integer> getDaal() {
+	public HashMap<Boolean, Integer> getDaal() {
 		return daal;
 	}
 
-	public void setDaal(HashMap<String, Integer> daal) {
+	public void setDaal(HashMap<Boolean, Integer> daal) {
 		this.daal = daal;
 	}
 
-	public HashMap<String, Integer> getMutton() {
+	public HashMap<Boolean, Integer> getMutton() {
 		return mutton;
 	}
 
-	public void setMutton(HashMap<String, Integer> mutton) {
+	public void setMutton(HashMap<Boolean, Integer> mutton) {
 		this.mutton = mutton;
 	}
-
 }

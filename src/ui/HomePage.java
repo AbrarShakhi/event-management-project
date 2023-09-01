@@ -116,5 +116,7 @@ public class HomePage extends MainFrame {
 
 		ButtonListener.ExitProgram exitProgram = btnLsnr.new ExitProgram(this, user);
 		exitBtn.addActionListener(exitProgram);
+		ButtonListener.LogoutAl logoutAl = btnLsnr.new LogoutAl(this);
+		logoutBtn.addActionListener(logoutAl);
 	}
 }
