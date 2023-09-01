@@ -6,11 +6,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import inside.User;
+import listener.ButtonListener;
 
 import javax.swing.JButton;
 
 public class HomePage extends MainFrame {
 	private User user;
+	private ButtonListener btnLsnr;
 
 	private final int FRAME_WIDTH, FRAME_HEIGHT;
 
@@ -29,6 +31,7 @@ public class HomePage extends MainFrame {
 		this.user = user;
 		FRAME_WIDTH = DEVICE_WIDTH - 50;
 		FRAME_HEIGHT = DEVICE_HEIGHT - 50;
+		btnLsnr = new ButtonListener();
 
 		setDefaultCloseOperation(MainFrame.EXIT_ON_CLOSE);
 		setTitle("Event Management App");
@@ -110,5 +113,8 @@ public class HomePage extends MainFrame {
 		w = sideBarPnl.getWidth() - x;
 		h = 25;
 		logoutBtn.setBounds(x, y, w, h);
+
+		ButtonListener.ExitProgram exitProgram = btnLsnr.new ExitProgram(this, user);
+		exitBtn.addActionListener(exitProgram);
 	}
 }

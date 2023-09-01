@@ -11,6 +11,42 @@ import ui.*;
 import utility.*;
 
 public class ButtonListener {
+	
+	public class ExitProgram implements ActionListener {
+		LoginUserHandle loginUserHandle;
+		private HomePage homePage;
+		private User user;
+
+		public ExitProgram(HomePage homePage, User user) {
+			this.homePage = homePage;
+			this.user = user;
+			loginUserHandle = new LoginUserHandle();
+		}
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			int choice = JOptionPane.showOptionDialog(null, "Do you want to save login info?", "exit",
+					JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.DEFAULT_OPTION, null, null, null);
+			switch (choice) {
+				case 0: // yes
+				loginUserHandle.saveUsername(user.getUsername());
+					break;
+				case 1: // no
+					FileDir.resetFile(FilePaths.LOGGED_IN_USERNAME, "username");
+					break;
+				default:
+					return;
+			}
+			try {
+				homePage.dispose();
+				Thread.sleep(2000);
+			} catch (InterruptedException e1) {
+			} finally {
+				System.exit(0);
+			}
+		}
+
+	}
 
 	public class DirectLogin implements ActionListener {
 		private WelcomePage wlc;
@@ -80,11 +116,11 @@ public class ButtonListener {
 			try {
 				if (inputUsername.isBlank() || inputPassword.isBlank()) {
 					JOptionPane.showMessageDialog(
-						null,
-						"Please input something",
-						"Invalid Username or password",
-						JOptionPane.ERROR_MESSAGE);
-						return;
+							null,
+							"Please input something",
+							"Invalid Username or password",
+							JOptionPane.ERROR_MESSAGE);
+					return;
 				}
 
 				String[] userInfo = loginUserHandle.findRgisteredUser(inputUsername);
@@ -153,11 +189,7 @@ public class ButtonListener {
 		@Override
 		public void actionPerformed(ActionEvent ev) {
 			// need some work
-			JOptionPane.showMessageDialog(
-					null,
-					"I am working on it.\nPlease click ok to register as a TESTUSER",
-					"register",
-					JOptionPane.INFORMATION_MESSAGE);
+			RegisterPage rgp = new RegisterPage(wlc);
 
 			// It will dispose and open Homepage if user is valid
 			wlc.dispose();

@@ -1,7 +1,9 @@
 package auth;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -103,10 +105,10 @@ public class LoginUserHandle {
 
 		} catch (FileNotFoundException e) {
 		} catch (Exception e) {
-			e.printStackTrace();
 			JOptionPane.showMessageDialog(null, "permition denied", "ERROR",
 					JOptionPane.ERROR_MESSAGE);
 
+			FileDir.resetFile(FilePaths.LOGGED_IN_USERNAME, "username");
 		} finally {
 			if (scanner != null)
 				scanner.close();
