@@ -1,6 +1,2 @@
-bin/*.class
-bin/**/*.class
-*.class
-**/*.class
-**/**/*.class
-.data/**
+.data
+bin/.data
