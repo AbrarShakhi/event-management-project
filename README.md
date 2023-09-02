@@ -1,12 +1,12 @@
 # event-management-project [Alpha_Version]
 
-In this project we are requared to build an Event management project. 
+In this project we are requared to build an Event management project. **Under development**
 
 ---
 
 ### Test executable file
 
-here is the executable jar file in a zip folder. download to test the app. [Click here](bin/event-management-project.zip).
+here is the executable jar file in a zip folder. download to test the app. [Click here](bin/).
 You need to extract the zip file and open this jar file.
 
 ---
