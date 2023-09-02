@@ -8,6 +8,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import listener.ButtonListener;
+import utility.TempColor;
 
 public class LoginPage extends MainFrame {
 	private WelcomePage welcomePage;
@@ -45,6 +46,7 @@ public class LoginPage extends MainFrame {
 		usernameField();
 		passwordField();
 		button();
+		lookFeel();
 
 		c.add(titleLbl);
 		c.add(usernameField);
@@ -52,6 +54,13 @@ public class LoginPage extends MainFrame {
 		c.add(loginButton);
 
 		setVisible(true);
+	}
+
+	private void lookFeel(){
+		loginButton.setBackground(TempColor.DARK_CYAN);
+		loginButton.setForeground(TempColor.WHITE);
+		loginButton.setBorder(null);
+		loginButton.setFocusable(false);
 	}
 
 	private void lebel() {

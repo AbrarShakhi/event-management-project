@@ -1,12 +1,12 @@
 package ui;
 
-import java.awt.Color;
 import java.awt.Container;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import inside.User;
 import listener.ButtonListener;
+import utility.TempColor;
 
 import javax.swing.JButton;
 
@@ -37,6 +37,7 @@ public class HomePage extends MainFrame {
 		setTitle("Event Management App");
 		setSize(FRAME_WIDTH, FRAME_HEIGHT);
 		setLocationRelativeTo(null);
+		setResizable(false);
 		c = getContentPane();
 		c.setLayout(null);
 
@@ -46,6 +47,7 @@ public class HomePage extends MainFrame {
 
 		lebel();
 		button();
+		lookFeel();
 
 		sideBarPnl.add(logoutBtn);
 		sideBarPnl.add(usernameLbl);
@@ -55,6 +57,23 @@ public class HomePage extends MainFrame {
 		mainBoxPnl.add(exitBtn);
 
 		setVisible(true);
+	}
+
+	private void lookFeel() {
+		logoutBtn.setBackground(TempColor.VERY_LIGHT_OGANGE);
+		logoutBtn.setForeground(TempColor.WHITE);
+		logoutBtn.setBorder(null);
+		logoutBtn.setFocusable(false);
+
+		checkoutBtn.setBackground(TempColor.GREEN);
+		checkoutBtn.setForeground(TempColor.WHITE);
+		checkoutBtn.setBorder(null);
+		checkoutBtn.setFocusable(false);
+
+		exitBtn.setBackground(TempColor.VERY_LIGHT_OGANGE);
+		exitBtn.setForeground(TempColor.WHITE);
+		exitBtn.setBorder(null);
+		exitBtn.setFocusable(false);
 	}
 
 	private void panel() {
@@ -69,7 +88,7 @@ public class HomePage extends MainFrame {
 		y = 0;
 		w = FRAME_WIDTH / 6;
 		h = FRAME_HEIGHT;
-		sideBarPnl.setBackground(Color.LIGHT_GRAY);
+		sideBarPnl.setBackground(TempColor.LIGHT_GRAY);
 		sideBarPnl.setBounds(x, y, w, h);
 
 		x = FRAME_WIDTH / 6;

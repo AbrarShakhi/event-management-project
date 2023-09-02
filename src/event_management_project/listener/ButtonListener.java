@@ -50,7 +50,7 @@ public class ButtonListener {
 			switch (choice) {
 				case 0:
 					FileDir.resetFile(FilePaths.LOGGED_IN_USERNAME, "username " + user.getUsername());
-					break;
+					return;
 				case 1:
 					FileDir.resetFile(FilePaths.LOGGED_IN_USERNAME, "username");
 					break;
@@ -219,10 +219,12 @@ public class ButtonListener {
 	public class RegisterFromRegisterPage implements ActionListener {
 		private RegisterPage registerPage;
 		private User user;
+		private RegisterUserHandle ruh;
 
 		public RegisterFromRegisterPage(RegisterPage registerPage) {
 			this.registerPage = registerPage;
 			this.user = new User();
+			ruh = new RegisterUserHandle();
 		}
 
 		@Override
@@ -234,12 +236,76 @@ public class ButtonListener {
 			String password = new String(registerPage.getPasswordField().getPassword());
 
 			if (username == null || firstName == null ||
-					lastName == null || email == null || password == null)
+					lastName == null || email == null || password == null) {
+
+				JOptionPane.showMessageDialog(
+						null,
+						"First name, last name, email and password required",
+						"input is null",
+						JOptionPane.WARNING_MESSAGE);
 				return;
+			}
 
 			if (username.isEmpty() || firstName.isEmpty() ||
-					lastName.isEmpty() || email.isEmpty() || password.isEmpty())
+					lastName.isEmpty() || email.isEmpty() || password.isEmpty()) {
+
+				JOptionPane.showMessageDialog(
+						null,
+						"First name, last name, email and password required",
+						"input is empty",
+						JOptionPane.WARNING_MESSAGE);
 				return;
+			}
+
+			if (!ruh.validInfoToRegister(username)) {
+				JOptionPane.showMessageDialog(
+						null,
+						"First name, last name, email and password required",
+						"input is empty",
+						JOptionPane.WARNING_MESSAGE);
+				return;
+			}
+			if (!ruh.validInfoToRegister(firstName)) {
+				JOptionPane.showMessageDialog(
+						null,
+						"First name can not have any space inside them",
+						"Not vallid",
+						JOptionPane.WARNING_MESSAGE);
+				return;
+			}
+			if (!ruh.validInfoToRegister(lastName)) {
+				JOptionPane.showMessageDialog(
+						null,
+						"Last name can not have any space inside them",
+						"Not vallid",
+						JOptionPane.WARNING_MESSAGE);
+				return;
+			}
+			if (!ruh.validInfoToRegister(email)) {
+				JOptionPane.showMessageDialog(
+						null,
+						"Email is not valid",
+						"Not vallid",
+						JOptionPane.WARNING_MESSAGE);
+				return;
+			}
+
+			switch (ruh.passwordType(password)) {
+				case 1:
+				JOptionPane.showMessageDialog(
+						null,
+						"choose a strong password (length > 7 , mixing of special chars, number, upper and lower case)",
+						"Not vallid",
+						JOptionPane.WARNING_MESSAGE);
+					return;
+				case -1:
+					JOptionPane.showMessageDialog(
+							null,
+							"password can not have leading and trailing space",
+							"Not vallid",
+							JOptionPane.WARNING_MESSAGE);
+					return;
+			}
 
 			username = username.trim();
 			firstName = firstName.trim();

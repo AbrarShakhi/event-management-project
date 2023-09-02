@@ -1,2 +1,4 @@
 .data
 bin/.data
+bin/*.class
+bin/**/*.class

@@ -1,6 +1,7 @@
 package ui;
 
 import listener.ButtonListener;
+import utility.TempColor;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -69,6 +70,7 @@ public class WelcomePage extends MainFrame {
 		image();
 		lebel();
 		button();
+		lookFeel();
 
 		c.add(titleLbl);
 		c.add(loginBtn);
@@ -77,6 +79,18 @@ public class WelcomePage extends MainFrame {
 
 		setVisible(true);
 		nextSlide();
+	}
+
+	private void lookFeel() {
+		loginBtn.setBackground(TempColor.DARK_CYAN);
+		loginBtn.setForeground(TempColor.WHITE);
+		loginBtn.setBorder(null);
+		loginBtn.setFocusable(false);
+
+		registerBtn.setBackground(TempColor.WHITE);
+		registerBtn.setForeground(TempColor.DARK_CYAN);
+		registerBtn.setBorder(null);
+		registerBtn.setFocusable(false);
 	}
 
 	public void disposeAndstopSlideShow() {

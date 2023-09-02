@@ -10,6 +10,7 @@ import javax.swing.JTextField;
 
 import auth.RegisterUserHandle;
 import listener.ButtonListener;
+import utility.TempColor;
 
 public class RegisterPage extends MainFrame {
 	private ButtonListener btnListener;
@@ -70,6 +71,7 @@ public class RegisterPage extends MainFrame {
 		nameFileld();
 		passwordField();
 		button();
+		lookFeel();
 
 		c.add(showUsername);
 		c.add(firstNameFileld);
@@ -79,6 +81,13 @@ public class RegisterPage extends MainFrame {
 		c.add(registerBtn);
 
 		setVisible(true);
+	}
+
+	private void lookFeel() {
+		registerBtn.setBackground(TempColor.DARK_CYAN);
+		registerBtn.setForeground(TempColor.WHITE);
+		registerBtn.setBorder(null);
+		registerBtn.setFocusable(false);
 	}
 
 	private boolean takeUsername() {
@@ -114,8 +123,8 @@ public class RegisterPage extends MainFrame {
 
 	private void nameFileld() {
 		int x, y, w, h;
-		firstNameFileld = new JTextField("First_name", 1);
-		lastNameFileld = new JTextField("Last_name", 1);
+		firstNameFileld = new JTextField("firstName", 1);
+		lastNameFileld = new JTextField("lastName", 1);
 
 		x = 5;
 		y = showUsername.getY() + showUsername.getHeight() + 10;
@@ -159,7 +168,9 @@ public class RegisterPage extends MainFrame {
 		h = passwordField.getHeight();
 
 		registerBtn.setBounds(x, y, w, h);
-		ButtonListener.RegisterFromRegisterPage registerFromRegisterPage = btnListener.new RegisterFromRegisterPage(this);
+		ButtonListener.RegisterFromRegisterPage registerFromRegisterPage = btnListener.new RegisterFromRegisterPage(
+				this);
+
 		registerBtn.addActionListener(registerFromRegisterPage);
 	}
 
