@@ -4,8 +4,6 @@ import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
-import java.awt.Toolkit;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -20,10 +18,7 @@ import javax.swing.JPanel;
  */
 public class WelcomePage extends JFrame {
     // Frame Size
-    private final Dimension DEVICE_SCREEN_SIZE;
-    public final int DEVICE_WIDTH;
-    public final int DEVICE_HEIGHT;
-    public final Dimension FRAME_D;
+    public final Dimension WELCOME_FRAME_D;
 
     private boolean isLoggedIn;
     private String[] picsPath;
@@ -46,20 +41,17 @@ public class WelcomePage extends JFrame {
     }
 
     public WelcomePage() {
+        user = new User();
         isLoggedIn = FileHandle.isAlreadyLoggedIn();
         picsPath = grabPicsPath();
 
-        DEVICE_SCREEN_SIZE = Toolkit.getDefaultToolkit().getScreenSize();
-        DEVICE_HEIGHT = (int) (DEVICE_SCREEN_SIZE.getHeight());
-        DEVICE_WIDTH = (int) (DEVICE_SCREEN_SIZE.getWidth());
-        FRAME_D = new Dimension(DEVICE_WIDTH / 3, 2 * DEVICE_HEIGHT / 3);
+        WELCOME_FRAME_D = new Dimension(Main.DEVICE_WIDTH / 3, 2 * Main.DEVICE_HEIGHT / 3);
 
-        this.setTitle("Event management system");
+        setTitle("Event management system");
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(FRAME_D);
+        setSize(WELCOME_FRAME_D);
         setLocationRelativeTo(null);
-
         getContentPane().setLayout(null);
 
         cardsPics = new CardLayout();
@@ -75,6 +67,7 @@ public class WelcomePage extends JFrame {
             getContentPane().add(registerBtn);
 
         nextSlide();
+        setVisible(true);
     }
 
     private void setTitleLbl() {
@@ -171,17 +164,17 @@ public class WelcomePage extends JFrame {
 
                 this.disposeAndstopSlideShow();
 
-                new HomePage(this.user).setVisible(true);
+                new HomePage(this.user);
                 ;
             });
         } else {
             loginBtnText = "Log in";
 
             loginBtn.addActionListener((ap) -> {
-                new LoginPage(this).setVisible(true);
+                new LoginPage(this);
             });
             registerBtn.addActionListener((ap) -> {
-                new RegisterPage().setVisible(true);
+                new RegisterPage();
                 this.disposeAndstopSlideShow();
             });
         }

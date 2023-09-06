@@ -1,35 +1,31 @@
 package com.event.management;
 
+import java.util.ArrayList;
+
 public class User {
     private String name;
     private String username;
     private String email;
     private String password;
-
-    public User(String name, String username, String email, String password) {
-        this.name = name;
-        this.username = username;
-        this.email = email;
-        this.password = password;
-    }
+    private ArrayList<UserEvent> eventList;
 
     public User() {
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
+    public User(String name, String username, String email, String password, ArrayList<UserEvent> eventList) {
+        this.name = name;
+        this.username = username;
         this.email = email;
+        this.password = password;
+        this.eventList = eventList;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String firstName, String lastName) {
-        this.name = firstName + " " + lastName;
+    public void setName(String fn, String ln) {
+        this.name = fn + " " + ln;
     }
 
     public String getUsername() {
@@ -40,6 +36,14 @@ public class User {
         this.username = username;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -47,4 +51,13 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public ArrayList<UserEvent> getEventList() {
+        return eventList;
+    }
+
+    public void setEventList(ArrayList<UserEvent> eventList) {
+        this.eventList = eventList;
+    }
+
 }
