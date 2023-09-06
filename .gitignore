@@ -1,4 +1,3 @@
-.data
-bin/.data
-bin/*.class
-bin/**/*.class
+.data/
+src/event_management_project/
+target/

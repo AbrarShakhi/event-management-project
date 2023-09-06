@@ -1,7 +1,3 @@
 {
-	"java.project.sourcePaths": ["src/event_management_project"],
-	"java.project.outputPath": "bin",
-	"java.autobuild.enabled": false,
-	"java.codeAction.sortMembers.avoidVolatileChanges": false,
-	"java.project.referencedLibraries": ["lib/**/*.jar"]
+  "java.autobuild.enabled": false
 }

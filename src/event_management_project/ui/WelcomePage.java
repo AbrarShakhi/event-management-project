@@ -104,13 +104,14 @@ public class WelcomePage extends MainFrame {
 				try {
 					Thread.sleep(5000);
 				} catch (InterruptedException ie) {
+					System.out.println("interrupt");
 					break;
 				}
 				cardsPics.next(slideShowPanel);
 				System.out.println("Changing");
 			}
 		});
-
+		changeBannerThread.start();
 	}
 
 	private void panel() {
