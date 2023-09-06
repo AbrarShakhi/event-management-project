@@ -6,8 +6,6 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import javax.swing.event.DocumentEvent.EventType;
-
 /**
  * FileHandle
  */
@@ -121,13 +119,18 @@ public class FileHandle {
 		try {
 			scanner = new Scanner(new File(DATA_FOLDER + "/" + ADDED_EVENT));
 			while (scanner.hasNextLine()) {
-				String[] eventInfo = scanner.nextLine().split(";");
+				String input = scanner.nextLine();
+				if (input == null)
+					continue;
+				if (input.length() < 1 || input.isEmpty())
+					continue;
+
+				String[] eventInfo = input.split(";");
 				for (int i = 0; i < eventInfo.length; i++) {
 					eventInfo[i] = eventInfo[i].trim();
 				}
 				eventList.add(new UserEvent(eventInfo[0], eventInfo[1], eventInfo[2], eventInfo[3], eventInfo[4],
 						eventInfo[5]));
-
 			}
 		} catch (Exception e) {
 			return new ArrayList<UserEvent>();

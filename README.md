@@ -21,16 +21,15 @@ You need to extract the zip file and open this jar file.
 
 ### Source code
 
-source code is [here](src/event_management_project)
+source code is [here](src/main/java/com/event/management/)
 
 ---
 
 ### Contributor
 
-- Project director [Dr. Hasan Mahmood Aminul Islam](github.com/hmaislam)
+<!-- - Project director [Dr. Hasan Mahmood Aminul Islam](github.com/hmaislam)
 - Project manager [Md. Shakhiul abrar](github.com/AbrarShakhi)
 - member [Mohua Akhter](github.com/MohuaAkter)
-- member [Turjo Khan](github.com/shahriarkhan12)
-
+- member [Turjo Khan](github.com/shahriarkhan12) -->
 
 ---

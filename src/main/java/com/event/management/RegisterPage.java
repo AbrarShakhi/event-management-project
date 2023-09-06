@@ -74,6 +74,7 @@ public class RegisterPage extends JFrame {
         String lastName = this.lastNameFileld.getText().trim();
         String email = this.emailFeild.getText().trim();
         String password = new String(this.passwordField.getPassword());
+		password = password.trim();
 
         if (username == null || firstName == null ||
                 lastName == null || email == null || password == null) {
@@ -146,12 +147,6 @@ public class RegisterPage extends JFrame {
                         JOptionPane.WARNING_MESSAGE);
                 return;
         }
-
-        username = username.trim();
-        firstName = firstName.trim();
-        lastName = lastName.trim();
-        email = email.trim();
-        password = password.trim();
 
         FileHandle.AppendFile(FileHandle.REGISTERED_USER,
                 username + " " + firstName + " " + lastName + " " + email + " " + password);
