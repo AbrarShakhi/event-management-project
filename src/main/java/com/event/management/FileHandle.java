@@ -6,9 +6,6 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
- * FileHandle
- */
 public class FileHandle {
 	protected static final String DATA_FOLDER = ".database";
 	protected static final String LOGGED_IN_USERNAME = ".loggedin_username.txt";

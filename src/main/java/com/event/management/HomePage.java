@@ -7,12 +7,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.border.Border;
 
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Frame;
 import java.util.ArrayList;
 
 public class HomePage extends JFrame {
